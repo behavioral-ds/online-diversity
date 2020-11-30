@@ -41,3 +41,6 @@ vignettes/*.pdf
 
 # R binary files that can be generated from code
 *.rds
+*.dat
+data/reddit-volume-augmented.csv
+data/twitter-volume-augmented.csv

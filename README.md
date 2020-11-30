@@ -4,32 +4,50 @@ online activity
 
 This repository contains code and data accompanying the publication
 “Evolution of diversity and dominance of companies in online activity”
-[\[McCarthy et al, ’20\]]().
+[\[McCarthy et al,
+    ’20\]]().
 
 # Reference:
 
-    [McCarthy et al, '20] McCarthy, P. X., Rizoiu, M.-A., Gong, X., Eghbal, S., & Falster, D. S. (2020). 
+    [McCarthy et al, '20] McCarthy, P. X., Gong, X., Eghbal, S., Falster, D. S., & Rizoiu, M.-A. (2020). 
     Evolution of diversity and dominance of companies in online activity.
+
+# Reproducing analysis and results:
+
+All the data and code to reproduce the analysis, the results and the
+plots included in the main paper are found in this repository. We use
+the `make` build system for running analysis and generating intermediary
+results, as well as plotting figures. Usage examples:
+
+  - `make fig1` – generates all the analysis required, and the figure
+    `plots/Fig1.pdf`;
+  - `make clean` – removes all generated files (`*.rds`, `*.dat`);
+  - `make all` – reproduces all analysis and all plots. **WARNING**:
+    this can take a while to execute, and might require a machine with
+    significant memory.
 
 # Repository content:
 
 This repository contains the following code scripts:
 
-<!-- * `scripts/build-professions-profiles.R` -- R script that starts from `data/all_users_data.csv.xz`, and builds the profession profiles (stored in the file `data/profession-profiles.csv`); -->
-
-<!-- * `scripts/vocation-map.R` -- R script that starts from `data/profession-profiles.csv` to build the Vocation Map starting from occupation psychological profiles; -->
-
-<!-- * `scripts/predict-profession-python.ipynb` -- Python Jupyter notebook to build predictors for forecasting user occupation. -->
-
-<!-- * `scripts/prediction-step1-run-prediction.sh` -- Bash script to transform the Jupyter notebook to a `py` file and run it without a graphical interface; -->
-
-<!-- * `scripts/prediction-step2-read-prediction-models-from-Python.R` -- R script (using the `reticulate` package, which reads Python data sctructures produced by `scripts/predict-profession-python.ipynb` and builds R structures); -->
-
-<!-- * `scripts/prediction-step3-plot-prediction.R` -- R script that plots the prediction performance indicators (Precision, Recall, F1 score and Accuracy); -->
-
-<!-- * `scripts/construct-confusion-matrix.R` -- R script that loads the prediction results (see `data/prediction-results`) and builds the confusion matrix. -->
-
-<!-- * `scripts/utils.R` -- additional functions for reading, writing data and plotting. -->
+  - `scripts/process_compute-reddit-volume.R` and
+    `process_compute-twitter-volume.R` – R scripts that start the
+    dataset files (`data/reddit.csv.xz`, `data/twitter.csv.1.xz` and
+    `data/twitter.csv.2.xz`), and compute the number of posts, links,
+    active domains, HHI and link uniqueness. Required for plotting
+    `plots/Fig1.pdf`;
+  - `scripts/process_diversity-decrease.R` – R scripts that start the
+    dataset files and computes the diversity reduction indicators:
+    skewness, kurtosis and PL fits. Required for plotting
+    `plots/Fig1.pdf` and plotting `plots/Fig3.pdf` (**Note:** running
+    this script requires significant memory);
+  - `scripts/process_twelve-functions-competitors.R` –
+  - `scripts/process_temporal-analysis.R` –
+  - `scripts/plot_fig1.R`, `scripts/plot_fig3.R`, `scripts/plot_fig5.R`,
+    `scripts/plot_fig6.R` – R script to plot the different figures in
+    the paper;
+  - `scripts/utils.R` – additional functions for reading, writing data
+    and plotting.
 
 The following data and plots is also available:
 
@@ -41,14 +59,15 @@ The following data and plots is also available:
     using LZMA). Lines are domain names, columns are months. The data
     frame has been split into two halves to respect GitHub’s maximum
     file limits. The files need to be loaded individually, and
-    concatenated at the level of rows. For example, in `R` do:
+    concatenated at the level of rows. For example, in `R`
+do:
 
 <!-- end list -->
 
 ``` r
 # note: this might take some time to run, and require quite a bit of memory
-twitter.csv <- rbind(read.csv("data/twitter.csv.1.xz", sep=""),
-                     read.csv("data/twitter.csv.2.xz", sep="") )
+dataset <- bind_rows(read_csv("data/twitter.csv.1.xz"),
+                     read_csv("data/twitter.csv.2.xz") )
 ```
 
 <!-- * `plots/vocation-map-static.pdf` -- a static version of the Vocation Map.  -->
@@ -57,8 +76,9 @@ twitter.csv <- rbind(read.csv("data/twitter.csv.1.xz", sep=""),
 
 <!-- * `plots/confusion-heatmap-dendogram.pdf` -- the confusion map for the XGBoost classifier (based on `data/prediction-results/*`) -->
 
-<!-- ![A static version of the Vocation Map.](plots/vocation-map-static.png) -->
-
+Here is an example of the generated Figure 1 from the main text,
+obtained using `make fig1`: ![A static version of the Vocation
+Map.](plots/Fig1.png)
 <!-- ![Confusion map showing that even when the prediction is wrong, it is still pretty good.](plots/confusion-heatmap-dendogram.png) -->
 
 <!-- Additional data file: -->

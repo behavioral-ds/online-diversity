@@ -14,6 +14,7 @@ cols <- c("#0084b4", "#ff4500")
 names(cols) <- c('twitter', 'reddit')
 
 pdf ('plots/Fig1.pdf', height=8, width=8)
+# png(filename = 'plots/Fig1.png', width = 800, height = 800, units = "px")
 par(mfrow=c(2,2), oma=c(4,2,0,1), mar=c(2,6,4,0))
 
 reddit_volume <- read_csv(file = "data/reddit-volume-augmented.csv")

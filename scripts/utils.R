@@ -17,23 +17,23 @@ load_dataset <- function(datasetname = "reddit") {
          reddit = {
            if (file.exists("data/reddit.rds")) {
              ## we have the binary version
-             dataset <- read_rds(path = "data/reddit.rds")
+             dataset <- read_rds(file = "data/reddit.rds")
            } else {
              ## need to read from the CSV and create the RDS
              dataset <- read_csv(file = "data/reddit.csv.xz")
-             write_rds(x = dataset, path = "data/reddit.rds", compress = "bz2")
+             write_rds(x = dataset, file = "data/reddit.rds", compress = "bz2")
            }
            outliers <- c()
          },
          twitter = {
            if (file.exists("data/twitter.rds")) {
              ## we have the binary version
-             dataset <- read_rds(path = "data/twitter.rds")
+             dataset <- read_rds(file = "data/twitter.rds")
            } else {
              ## need to read from the CSV and create the RDS
              dataset <- bind_rows(read_csv("data/twitter.csv.1.xz"),
                                   read_csv("data/twitter.csv.2.xz") )
-             write_rds(x = dataset, path = "data/twitter.rds", compress = "bz2")
+             write_rds(x = dataset, file = "data/twitter.rds", compress = "bz2")
            }          
            
            # load("data/binary_datasets/twitter.dat") ; datasetname <- "twitter" ; dataset <- twitter ; rm(twitter) ; 
