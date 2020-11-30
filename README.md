@@ -41,8 +41,14 @@ This repository contains the following code scripts:
     skewness, kurtosis and PL fits. Required for plotting
     `plots/Fig1.pdf` and plotting `plots/Fig3.pdf` (**Note:** running
     this script requires significant memory);
-  - `scripts/process_twelve-functions-competitors.R` –
-  - `scripts/process_temporal-analysis.R` –
+  - `scripts/process_twelve-functions-competitors.R` – R scripts that
+    start the dataset files and the list of competitors in the 12
+    selected functions, and builds the volume of attention for each
+    function. Required for `plots/Fig5.pdf`;
+  - `scripts/process_temporal-analysis.R` – R scripts that start the
+    dataset files and build the total volume of attention received by
+    the temporal cohorts (domains that appear in particular years).
+    Required for `plots/Fig6.pdf`;
   - `scripts/plot_fig1.R`, `scripts/plot_fig3.R`, `scripts/plot_fig5.R`,
     `scripts/plot_fig6.R` – R script to plot the different figures in
     the paper;
@@ -68,6 +74,20 @@ do:
 # note: this might take some time to run, and require quite a bit of memory
 dataset <- bind_rows(read_csv("data/twitter.csv.1.xz"),
                      read_csv("data/twitter.csv.2.xz") )
+```
+
+  - `data/commoncrawl1.csv.xz` and `data/commoncrawl2.csv.xz` – contain
+    the PageRank for the top most linked **XX million websites**.
+    Similar to the Twitter dataset, CommonCrawl has been split into two
+    and can be merged
+via:
+
+<!-- end list -->
+
+``` r
+# note: this might take some time to run, and require quite a bit of memory
+dataset <- bind_rows(read_csv("data/commoncrawl1.csv.xz"),
+                     read_csv("data/commoncrawl2.csv.xz") )
 ```
 
 <!-- * `plots/vocation-map-static.pdf` -- a static version of the Vocation Map.  -->
