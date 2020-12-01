@@ -3,11 +3,19 @@ all: fig1 fig3 fig5 fig6
 fig1: data/reddit-volume-augmented.csv data/twitter-volume-augmented.csv data/reddit-total-diversity-decline.dat data/twitter-total-diversity-decline.dat
 	mkdir -p plots
 	Rscript scripts/plot_fig1.R
+	
+fig2: data/reddit.csv online-diversity/data/twitter.csv.1 data/twitter.csv.2 data/commoncrawl1.csv.xz data/commoncrawl2.csv.xz
+	mkdir -p plots
+	Pythonscript scripts/plot_fig2.ipynb
 
 fig3: data/reddit-total-diversity-decline.dat data/twitter-total-diversity-decline.dat 
 	mkdir -p plots
 	Rscript scripts/plot_fig3.R
-
+	
+fig4: data/reddit.csv data/twitter.csv.1 data/twitter.csv.2
+	mkdir -p plots
+	Pythonscript scripts/plot_fig4.ipynb
+	
 fig5: data/competitors-merged.dat
 	mkdir -p plots
 	Rscript scripts/plot_fig5.R
@@ -16,6 +24,14 @@ fig6: data/reddit_cohort_analysis.dat data/twitter_cohort_analysis.dat
 	mkdir -p plots
 	Rscript scripts/plot_fig6.R
 
+fig7: data/Tesla_data.csv.xz
+	mkdir -p plots
+	Pythonscript scripts/plot_fig7.ipynb
+	
+figS3: data/reddit.csv data/twitter.csv.1 data/twitter.csv.2
+	mkdir -p plots
+	Pythonscript scripts/plot_figS3.ipynb	
+	
 clean:
 	rm -f data/reddit-volume-augmented.csv data/twitter-volume-augmented.csv data/reddit-total-diversity-decline.dat data/twitter-total-diversity-decline.dat data/competitors-merged.dat data/*.rds table.tex
 
