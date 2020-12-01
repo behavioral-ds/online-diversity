@@ -4,7 +4,7 @@ fig1: data/reddit-volume-augmented.csv data/twitter-volume-augmented.csv data/re
 	mkdir -p plots
 	Rscript scripts/plot_fig1.R
 	
-fig2: data/reddit.csv online-diversity/data/twitter.csv.1 data/twitter.csv.2 data/commoncrawl1.csv.xz data/commoncrawl2.csv.xz
+fig2:
 	mkdir -p plots
 	Pythonscript scripts/plot_fig2.ipynb
 
