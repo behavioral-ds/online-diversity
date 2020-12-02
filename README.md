@@ -26,6 +26,16 @@ results, as well as plotting figures. Usage examples:
     this can take a while to execute, and might require a machine with
     significant memory.
 
+**Note:** producing some of the figures requires `python`. We recommend
+the [anaconda](https://anaconda.org/) installation. You can install all
+required packages in a separate environment by using (in a terminal):
+
+``` bash
+# note: this will take a while to install
+conda create --name online-diversity  -c mlgill powerlaw numpy plotly seaborn matplotlib pandas notebook backports.lzma
+source activate online-diversity
+```
+
 # Repository content:
 
 This repository contains the following code scripts:
@@ -72,12 +82,13 @@ do:
 
 ``` r
 # note: this might take some time to run, and require quite a bit of memory
+library(tidyverse)
 dataset <- bind_rows(read_csv("data/twitter.csv.1.xz"),
                      read_csv("data/twitter.csv.2.xz") )
 ```
 
   - `data/commoncrawl1.csv.xz` and `data/commoncrawl2.csv.xz` – contain
-    the PageRank for the top most linked **XX million websites**.
+    the PageRank for the top most linked **2.8 million websites**.
     Similar to the Twitter dataset, CommonCrawl has been split into two
     and can be merged
 via:
@@ -86,36 +97,14 @@ via:
 
 ``` r
 # note: this might take some time to run, and require quite a bit of memory
+library(tidyverse)
 dataset <- bind_rows(read_csv("data/commoncrawl1.csv.xz"),
                      read_csv("data/commoncrawl2.csv.xz") )
 ```
 
-<!-- * `plots/vocation-map-static.pdf` -- a static version of the Vocation Map.  -->
-
-<!-- * `plots/vocation-map-interactive.html` -- the interactive version of the Vocation Map. Also available at http://bit.ly/vocation-map-interactive . -->
-
-<!-- * `plots/confusion-heatmap-dendogram.pdf` -- the confusion map for the XGBoost classifier (based on `data/prediction-results/*`) -->
-
 Here is an example of the generated Figure 1 from the main text,
 obtained using `make fig1`: ![A static version of the Vocation
 Map.](plots/Fig1.png)
-<!-- ![Confusion map showing that even when the prediction is wrong, it is still pretty good.](plots/confusion-heatmap-dendogram.png) -->
-
-<!-- Additional data file: -->
-
-<!-- === -->
-
-<!-- The following files cannot be publicly shared due to the Twitter's and IBM Watson's Terms of Service. -->
-
-<!-- However, these files could be provided privately upon request, requests are evaluated at a case-by-case basis. -->
-
-<!-- * `data/all_users_data.csv.xz` -- contains the psychological profiles of all 128,278 users in our study; -->
-
-<!-- * `data/10_professions_data.csv.xz` -- contains the Big5 and the personal values (10 features) for 38,073 users in the occupation prediction part of the paper; -->
-
-<!-- * `data/10_professions_data_big5.csv.xz` -- contains solely the Big5 traits for the 38,073 users above (useful for the ablation study); -->
-
-<!-- * `data/10_professions_data_values.csv.xz` -- contains solely the personal values for the 38,073 users above (useful for the ablation study). -->
 
 # License
 
