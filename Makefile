@@ -1,4 +1,4 @@
-all: fig1 fig3 fig5 fig6
+all: fig1 fig2 fig3 fig4 fig5 fig6 fig7 figS3
 	
 fig1: data/reddit-volume-augmented.csv data/twitter-volume-augmented.csv data/reddit-total-diversity-decline.dat data/twitter-total-diversity-decline.dat
 	mkdir -p plots
@@ -30,8 +30,7 @@ fig7:
 	
 figS3:
 	mkdir -p plots
-	jupyter nbconvert --to notebook --inplace --execute 
-	scripts/plot_figS3.ipynb	
+	jupyter nbconvert --to notebook --inplace --execute scripts/plot_figS3.ipynb	
 	
 clean:
 	rm -f data/reddit-volume-augmented.csv data/twitter-volume-augmented.csv data/reddit-total-diversity-decline.dat data/twitter-total-diversity-decline.dat data/competitors-merged.dat data/*.rds table.tex

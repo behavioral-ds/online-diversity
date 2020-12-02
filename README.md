@@ -19,8 +19,8 @@ plots included in the main paper are found in this repository. We use
 the `make` build system for running analysis and generating intermediary
 results, as well as plotting figures. Usage examples:
 
-  - `make fig1` – generates all the analysis required, and the figure
-    `plots/Fig1.pdf`;
+  - `make fig1` – generates all the analysis required, and plots the
+    figure `plots/Fig1.pdf`;
   - `make clean` – removes all generated files (`*.rds`, `*.dat`);
   - `make all` – reproduces all analysis and all plots. **WARNING**:
     this can take a while to execute, and might require a machine with
@@ -32,8 +32,9 @@ required packages in a separate environment by using (in a terminal):
 
 ``` bash
 # note: this will take a while to install
-conda create --name online-diversity  -c mlgill powerlaw numpy plotly seaborn matplotlib pandas notebook backports.lzma
+conda create --name online-diversity -c plotly python=3 numpy plotly seaborn matplotlib pandas notebook backports.lzma psutil requests plotly-orca
 source activate online-diversity
+pip install powerlaw
 ```
 
 # Repository content:

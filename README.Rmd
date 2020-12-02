@@ -20,7 +20,7 @@ All the data and code to reproduce the analysis, the results and the plots inclu
 We use the `make` build system for running analysis and generating intermediary results, as well as plotting figures.
 Usage examples:
 
-* `make fig1` -- generates all the analysis required, and the figure `plots/Fig1.pdf`;
+* `make fig1` -- generates all the analysis required, and plots the figure `plots/Fig1.pdf`;
 * `make clean` -- removes all generated files (`*.rds`, `*.dat`);
 * `make all` -- reproduces all analysis and all plots. **WARNING**: this can take a while to execute, and might require a machine with significant memory.
 
