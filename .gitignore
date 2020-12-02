@@ -44,3 +44,4 @@ vignettes/*.pdf
 *.dat
 data/reddit-volume-augmented.csv
 data/twitter-volume-augmented.csv
+*-checkpoint.ipynb
