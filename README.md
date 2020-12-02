@@ -63,7 +63,10 @@ This repository contains the following code scripts:
   - `scripts/plot_fig1.R`, `scripts/plot_fig3.R`, `scripts/plot_fig5.R`,
     `scripts/plot_fig6.R` – R script to plot the different figures in
     the paper;
-  - `scripts/utils.R` – additional functions for reading, writing data
+  - `scripts/plot_fig2.ipynb`, `scripts/plot_fig4.ipynb`,
+    `scripts/plot_fig7.ipynb`, `scripts/plot_figS3ipynb` – `Python`
+    jupyter notebooks to plot the different figures in the paper;
+  - `scripts/utils.R` – additional R functions for reading, writing data
     and plotting.
 
 The following data and plots is also available:
@@ -102,6 +105,9 @@ library(tidyverse)
 dataset <- bind_rows(read_csv("data/commoncrawl1.csv.xz"),
                      read_csv("data/commoncrawl2.csv.xz") )
 ```
+
+  - `data/Tesla_data.csv.xz` – the case study data of the connection
+    between social media attention and Enterprise Value for Tesla.
 
 Here is an example of the generated Figure 1 from the main text,
 obtained using `make fig1`: ![A static version of the Vocation
